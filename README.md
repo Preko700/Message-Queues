@@ -41,33 +41,6 @@ Este proyecto implementa un sistema de mensajería para comunicar aplicaciones d
 - **MQClient**: Contiene la biblioteca que permite a los clientes interactuar con el broker.
 - **GUI**: Contiene una aplicación de Windows Forms para probar las funcionalidades del sistema MQBroker.
 
-## Instrucciones de Uso
-
-### MQBroker
-
-1. Clona el repositorio: git clone https://github.com/tu-usuario/tu-repositorio.git
-2. Navega al directorio `MQBroker` cd MQBroker dotnet run
-
-### MQClient
-
-1. Agrega una referencia a `MQClient` en tu proyecto: dotnet add reference ../MQClient/MQClient.csproj
-
-### GUI
-
-1. Navega al directorio `GUI` y ejecuta el proyecto: cd GUI dotnet run
-
-
-## Contribuciones
-
-Las contribuciones son bienvenidas. Por favor, abre un issue o un pull request para discutir cualquier cambio que desees realizar.
-
-## Licencia
-
-Este proyecto está licenciado bajo la Licencia Apache . Consulta el archivo [LICENSE](LICENSE) para obtener más detalles.
-
-## Contacto
-
-Para cualquier consulta, por favor contacta a [adrimonge2014@gmail.com](mailto:adrimonge2014@gmail.com).
 
    
    
