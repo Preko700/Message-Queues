@@ -33,13 +33,17 @@ namespace GUI
         /// </summary>
         /// <param name="sender">El origen del evento.</param>
         /// <param name="e">La instancia <see cref="EventArgs"/> que contiene los datos del evento.</param>
-        private void btnConnect_Click(object sender, EventArgs e)
+        private void btnConnect_Click(Object sender, EventArgs e)
         {
-            string ip = txtIP.Text;
-            int port = int.Parse(txtPort.Text);
-            appId = Guid.Parse(txtAppID.Text);
-            client = new MQClient(ip, port, appId);
-            MessageBox.Show("Conectado a MQBroker");
+            string input = /* retrieve your input string */;
+            if (Guid.TryParse(input, out Guid guid))
+            {
+                // Proceed with the valid GUID
+            }
+            else
+            {
+                MessageBox.Show("Invalid GUID format. Please enter a valid GUID.");
+            }
         }
 
         /// <summary>
@@ -50,14 +54,21 @@ namespace GUI
         /// <param name="e">La instancia <see cref="EventArgs"/> que contiene los datos del evento.</param>
         private void btnSubscribe_Click(object sender, EventArgs e)
         {
-            Topic topic = new Topic(txtTopic.Text);
-            if (client.Subscribe(topic))
+            try
             {
-                MessageBox.Show("Suscrito al tema: " + topic.Name);
+                Topic topic = new Topic(txtTopic.Text);
+                if (client.Subscribe(topic))
+                {
+                    MessageBox.Show("Suscrito al tema: " + topic.Name);
+                }
+                else
+                {
+                    MessageBox.Show("Error al suscribirse al tema: " + topic.Name);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Error al suscribirse al tema: " + topic.Name);
+                MessageBox.Show("Error al suscribirse: " + ex.Message);
             }
         }
 
@@ -69,14 +80,21 @@ namespace GUI
         /// <param name="e">La instancia <see cref="EventArgs"/> que contiene los datos del evento.</param>
         private void btnUnsubscribe_Click(object sender, EventArgs e)
         {
-            Topic topic = new Topic(txtTopic.Text);
-            if (client.Unsubscribe(topic))
+            try
             {
-                MessageBox.Show("Desuscrito del tema: " + topic.Name);
+                Topic topic = new Topic(txtTopic.Text);
+                if (client.Unsubscribe(topic))
+                {
+                    MessageBox.Show("Desuscrito del tema: " + topic.Name);
+                }
+                else
+                {
+                    MessageBox.Show("Error al desuscribirse del tema: " + topic.Name);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Error al desuscribirse del tema: " + topic.Name);
+                MessageBox.Show("Error al desuscribirse: " + ex.Message);
             }
         }
 
@@ -88,15 +106,22 @@ namespace GUI
         /// <param name="e">La instancia <see cref="EventArgs"/> que contiene los datos del evento.</param>
         private void btnPublish_Click(object sender, EventArgs e)
         {
-            Topic topic = new Topic(txtTopic.Text);
-            Message message = new Message(txtMessage.Text);
-            if (client.Publish(message, topic))
+            try
             {
-                MessageBox.Show("Mensaje publicado en el tema: " + topic.Name);
+                Topic topic = new Topic(txtTopic.Text);
+                Message message = new Message(txtMessage.Text, appId);
+                if (client.Publish(message, topic))
+                {
+                    MessageBox.Show("Mensaje publicado en el tema: " + topic.Name);
+                }
+                else
+                {
+                    MessageBox.Show("Error al publicar el mensaje en el tema: " + topic.Name);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Error al publicar el mensaje en el tema: " + topic.Name);
+                MessageBox.Show("Error al publicar el mensaje: " + ex.Message);
             }
         }
 
@@ -108,9 +133,9 @@ namespace GUI
         /// <param name="e">La instancia <see cref="EventArgs"/> que contiene los datos del evento.</param>
         private void btnReceive_Click(object sender, EventArgs e)
         {
-            Topic topic = new Topic(txtTopic.Text);
             try
             {
+                Topic topic = new Topic(txtTopic.Text);
                 Message receivedMessage = client.Receive(topic);
 
                 // Mostrar el mensaje incluyendo el AppID del remitente
@@ -128,6 +153,10 @@ namespace GUI
                 MessageBox.Show("Error al recibir el mensaje: " + ex.Message);
             }
         }
+
+        private void txtAppID_TextChanged(object sender, EventArgs e)
+        {
+            // No implementation needed
+        }
     }
 }
-

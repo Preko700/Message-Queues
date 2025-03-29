@@ -175,14 +175,17 @@
     public class Message
     {
         public string Content { get; }
+        public Guid SenderAppId { get; } // Añadir propiedad SenderAppId
 
         /// <summary>
         /// Constructor que crea un nuevo Message.
         /// </summary>
         /// <param name="content">El contenido del mensaje.</param>
-        public Message(string content)
+        /// <param name="senderAppId">El AppID del remitente.</param>
+        public Message(string content, Guid senderAppId)
         {
             Content = content;
+            SenderAppId = senderAppId;
         }
     }
 }

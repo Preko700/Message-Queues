@@ -75,6 +75,7 @@
             txtAppID.Size = new Size(100, 23);
             txtAppID.TabIndex = 2;
             txtAppID.Text = "00000000-0000-0000-0000-000000000000";
+            txtAppID.TextChanged += txtAppID_TextChanged;
             // 
             // txtTopic
             // 
