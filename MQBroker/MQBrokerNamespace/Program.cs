@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -215,8 +216,21 @@ namespace MQBrokerNamespace
             if (subscriptions.Count == 0)
                 return "OK|No hay suscriptores para este tema";
 
+            Guid senderAppId = appId;
+            if (parts.Length >= 5)
+            {
+                try
+                {
+                    senderAppId = Guid.Parse(parts[4]);
+                }
+                catch
+                {
+                    // Si hay error al parsear, usamos el appId original
+                }
+            }
+
             // Crear el mensaje
-            MessageContent messageContent = new MessageContent(content);
+            MessageContent messageContent = new MessageContent(content, senderAppId);
 
             // Colocar el mensaje en la cola de cada suscriptor
             foreach (Subscription subscription in subscriptions.ToArray())
@@ -248,7 +262,7 @@ namespace MQBrokerNamespace
             // Obtener el mensaje
             MessageContent message = queueManager.DequeueMessage(subscription);
 
-            return $"OK|{message.Content}";
+            return $"OK|{message.Content}|{message.SenderAppId}";
         }
     }
 }

@@ -17,14 +17,17 @@ namespace MQBrokerNamespace
         /// </summary>
         public DateTime Timestamp { get; private set; }
 
+        public Guid SenderAppId { get; private set; } // Nueva propiedad
+
         /// <summary>
         /// Constructor que crea un nuevo mensaje con contenido específico.
         /// </summary>
         /// <param name="content">El contenido del mensaje.</param>
-        public MessageContent(string content)
+        public MessageContent(string content, Guid senderAppId)
         {
             Content = content;
             Timestamp = DateTime.Now;
+            SenderAppId = senderAppId;
         }
     }
 }

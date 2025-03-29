@@ -16,6 +16,15 @@ namespace GUI
         public Form1()
         {
             InitializeComponent();
+
+            // Generar un nuevo GUID automáticamente
+            appId = Guid.NewGuid();
+
+            // Mostrar el GUID en el campo txtAppID
+            txtAppID.Text = appId.ToString();
+
+            // Opcional: Deshabilitar el campo para que no se pueda editar
+            txtAppID.ReadOnly = true;
         }
 
         /// <summary>
@@ -103,7 +112,16 @@ namespace GUI
             try
             {
                 Message receivedMessage = client.Receive(topic);
-                lstMessages.Items.Add("Mensaje recibido: " + receivedMessage.Content);
+
+                // Mostrar el mensaje incluyendo el AppID del remitente
+                if (receivedMessage.SenderAppId != Guid.Empty)
+                {
+                    lstMessages.Items.Add($"Mensaje de {receivedMessage.SenderAppId}: {receivedMessage.Content}");
+                }
+                else
+                {
+                    lstMessages.Items.Add($"Mensaje recibido: {receivedMessage.Content}");
+                }
             }
             catch (Exception ex)
             {

@@ -56,7 +56,7 @@
         /// <returns>True si el mensaje se pudo colocar, false en caso contrario.</returns>
         public bool Publish(Message message, Topic topic)
         {
-            string msg = $"PUBLISH|{appId}|{topic.Name}|{message.Content}";
+            string msg = $"PUBLISH|{appId}|{topic.Name}|{message.Content}|{appId}"; // Añadir appId al final
             return SendMessage(msg);
         }
 
@@ -74,7 +74,23 @@
                 var parts = response.Split('|');
                 if (parts[0] == "OK")
                 {
-                    return new Message(parts[1]);
+                    string content = parts[1];
+                    Guid senderAppId = Guid.Empty;
+
+                    // Si hay un tercer parámetro, es el AppID del remitente
+                    if (parts.Length >= 3)
+                    {
+                        try
+                        {
+                            senderAppId = Guid.Parse(parts[2]);
+                        }
+                        catch
+                        {
+                            // Si hay error al parsear, dejamos Guid.Empty
+                        }
+                    }
+
+                    return new Message(content, senderAppId);
                 }
                 throw new Exception("Respuesta de error del servidor: " + response);
             }
