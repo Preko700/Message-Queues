@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading;
-using MQClientNamespace; // Asegúrate de usar el espacio de nombres correcto para MQClient, Topic y Message
+using MQClient;
 
 class Program
 {

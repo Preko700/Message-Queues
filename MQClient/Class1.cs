@@ -1,4 +1,4 @@
-﻿namespace MQClientNamespace
+﻿namespace MQClient
 {
     using System;
     using System.Net.Sockets;

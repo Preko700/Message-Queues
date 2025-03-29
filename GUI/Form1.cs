@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
-using MQClientNamespace;
-using Message = MQClientNamespace.Message; // Resolver ambigüedad
+using MQClient;
+using Message = MQClient.Message; // Resolver ambigüedad
 
 namespace GUI
 {
