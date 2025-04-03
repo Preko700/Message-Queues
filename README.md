@@ -183,7 +183,7 @@ cola.OnMessageProcessed += (sender, args) => {
 
 ## Requisitos
 
-- .NET 6.0 o superior
+- .NET 8.0 o superior
 - Windows, Linux o macOS
 
 ## Contribuir
