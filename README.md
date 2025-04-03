@@ -207,4 +207,4 @@ Este proyecto está licenciado bajo la Licencia Apache2-0 - consulta el archivo 
 
 ---
 
-Creado por [Preko700](https://github.com/Preko700)
+Creado por [Adrian Monge](https://github.com/Preko700) y [Jimena Castillo](https://github.com/JimenaCastillo)
