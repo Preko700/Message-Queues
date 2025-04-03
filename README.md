@@ -198,7 +198,7 @@ cola.OnMessageProcessed += (sender, args) => {
 
 ## Licencia
 
-Este proyecto está licenciado bajo la Licencia MIT - consulta el archivo LICENSE para más detalles.
+Este proyecto está licenciado bajo la Licencia Apache2-0 - consulta el archivo LICENSE para más detalles.
 
 ## Agradecimientos
 
