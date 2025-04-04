@@ -1,6 +1,6 @@
 # Message Queues
 
-Este proyecto implementa un sistema de colas de mensajes, proporcionando una solución eficaz para la gestión de la comunicación entre diferentes partes de una aplicación. 
+Este proyecto implementa un sistema de colas de mensajes, proporcionando una solución eficaz para la gestión de la comunicación entre diferentes partes de una aplicación.
 
 ## Descripción
 
@@ -15,7 +15,7 @@ Las colas de mensajes permiten a los sistemas distribuir y procesar datos de man
 
 ## Requisitos del Sistema
 
-- **Lenguaje de Programación**: [Especificar el lenguaje de programación usado, por ejemplo, Python, Java, etc.]
+- **Lenguaje de Programación**: C#
 - **Dependencias**: [Listar cualquier biblioteca o herramienta adicional que el proyecto requiera]
 
 ## Instalación
@@ -30,23 +30,7 @@ Las colas de mensajes permiten a los sistemas distribuir y procesar datos de man
     ```
 3. Instala las dependencias necesarias:
     ```bash
-    [Comando de instalación de dependencias, por ejemplo, `pip install -r requirements.txt`]
-    ```
-
-## Uso
-
-1. Configura el sistema [Instrucciones de configuración si aplica].
-2. Inicia el sistema de colas de mensajes:
-    ```bash
-    [Comando para iniciar el sistema]
-    ```
-3. Envía un mensaje:
-    ```bash
-    [Ejemplo de comando o código para enviar un mensaje]
-    ```
-4. Recibe un mensaje:
-    ```bash
-    [Ejemplo de comando o código para recibir un mensaje]
+    [Comando de instalación de dependencias, por ejemplo, `nuget restore`]
     ```
 
 ## Contribución
@@ -65,7 +49,7 @@ Para más detalles sobre el uso y las funcionalidades de este proyecto, consulta
 
 ## Licencia
 
-Este proyecto está bajo la licencia [Nombre de la licencia, por ejemplo, MIT License].
+Este proyecto está bajo la licencia Apache-2.0 License.
 
 ---
 
